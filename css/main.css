@@ -1,0 +1,16 @@
+main {
+  padding-top: 50px;
+}
+
+.answer-box {
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+}
+
+.answer-box div {
+  border: solid 1px black;
+  width: 60px;
+  height: 60px;
+  margin-right: 10px;
+}

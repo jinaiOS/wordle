@@ -21,6 +21,7 @@ header img {
   border: 1px solid black;
   border-radius: 15px;
   padding: 5px 10px;
+  text-align: center;
 }
 
 .menu-bar__etc {
