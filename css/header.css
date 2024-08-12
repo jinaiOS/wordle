@@ -1,0 +1,27 @@
+header img {
+  width: 30px;
+  height: 30px;
+}
+
+.menu-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.menu-bar__subscribe {
+  border: 1px solid black;
+  border-radius: 15px;
+  padding: 5px 10px;
+}
+
+.menu-bar__etc {
+  display: flex;
+  align-items: center;
+}
+
+.menu-bar__etc img {
+  margin-right: 10px;
+}
