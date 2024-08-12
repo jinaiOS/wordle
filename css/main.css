@@ -9,7 +9,8 @@ main {
 }
 
 .answer-box div {
-  border: solid 1px black;
+  border: solid 2px rgb(165, 165, 165);
+
   width: 60px;
   height: 60px;
   margin-right: 10px;

@@ -19,9 +19,10 @@ header img {
 
 .menu-bar__subscribe {
   border: 1px solid black;
-  border-radius: 15px;
+  border-radius: 23px;
   padding: 5px 10px;
   text-align: center;
+  width: 130px;
 }
 
 .menu-bar__etc {

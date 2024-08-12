@@ -1,0 +1,49 @@
+footer {
+  margin-top: 10px;
+}
+
+.keyboard {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.keyboard__btn {
+  background-color: rgb(212, 212, 212);
+  width: 50px;
+  height: 70px;
+  margin-right: 10px;
+  border-radius: 8px;
+  text-align: center;
+  line-height: 70px;
+}
+
+.keyboard__btn-enter {
+  background-color: rgb(212, 212, 212);
+  border-radius: 8px;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  font-size: 13px;
+}
+
+.keyboard__btn-delete {
+  background-color: rgb(212, 212, 212);
+  border-radius: 8px;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.delete {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
