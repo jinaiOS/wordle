@@ -1,70 +1,79 @@
-const answer_1 = document.getElementById("1-1");
-const answer_2 = document.getElementById("1-2");
-const answer_3 = document.getElementById("1-3");
-const answer_4 = document.getElementById("1-4");
-const answer_5 = document.getElementById("1-5");
+const 정답 = "APPLE";
 
-const keyboardBtn = document.querySelectorAll(".keyboard__btn");
+let attempts = 0;
+let index = 0;
 
-const keyboardEnterBtn = document.querySelector(".keyboard__btn-enter");
-const keyboardDeleteBtn = document.querySelector(".keyboard__btn-delete");
+function appStart() {
+  const displayGameover = () => {
+    const div = document.createElement("div");
+    div.innerText = "게임이 종료됐습니다.";
+    div.style =
+      "display:flex; justify-content:center; align-items:center; position:absolute; top:40vp; left:45vw; background-color:white; width:200px; height:140px;";
+    document.body.appendChild(div);
+  };
 
-const toast = document.querySelector(".toast");
+  const gameover = () => {
+    window.removeEventListener("keydown", handleKeydown);
+    displayGameover;
+  };
 
-function 클릭시_실행될_함수(event) {
-  const buttonText = event.target.innerText;
+  const nextLine = () => {
+    if (attempts === 6) return gameover;
+    attempts += 1;
+    index = 0;
+  };
 
-  if (answer_1.innerText === "") {
-    answer_1.innerText = buttonText;
-    answer_1.style.borderColor = "#808080";
-  } else if (answer_2.innerText === "") {
-    answer_2.innerText = buttonText;
-    answer_2.style.borderColor = "#808080";
-  } else if (answer_3.innerText === "") {
-    answer_3.innerText = buttonText;
-    answer_3.style.borderColor = "#808080";
-  } else if (answer_4.innerText === "") {
-    answer_4.innerText = buttonText;
-    answer_4.style.borderColor = "#808080";
-  } else if (answer_5.innerText === "") {
-    answer_5.innerText = buttonText;
-    answer_5.style.borderColor = "#808080";
-  }
+  const handleEnterKey = () => {
+    let 맞은_갯수 = 0;
 
-  console.log("버튼 클릭:", buttonText);
+    for (let i = 0; i < 5; i++) {
+      const block = document.querySelector(
+        `.answer-box__grid[data-index='${attempts}${i}']`
+      );
+      const 입력한_글자 = block.innerText;
+      const 정답_글자 = 정답[i];
+
+      if (입력한_글자 === 정답_글자) {
+        맞은_갯수 += 1;
+        block.style.background = "#6AAA64";
+      } else if (정답.includes(입력한_글자)) block.style.background = "#C9B458";
+      else block.style.background = "#787C7E";
+
+      block.style.color = "white";
+    }
+
+    if (맞은_갯수 === 5) gameover();
+    nextLine();
+  };
+
+  const handleBackspace = () => {
+    if (index > 0) {
+      const preBlock = document.querySelector(
+        `.answer-box__grid[data-index='${attempts}${index - 1}']`
+      );
+      preBlock.innerText = "";
+    }
+    if (index !== 0) index -= 1;
+  };
+
+  const handleKeydown = (event) => {
+    const key = event.key.toUpperCase();
+    const keyCode = event.keyCode;
+    const thisBlock = document.querySelector(
+      `.answer-box__grid[data-index='${attempts}${index}']`
+    );
+
+    if (event.key === `Backspace`) handleBackspace();
+    else if (index === 5) {
+      if (event.key === "Enter") handleEnterKey();
+      else return;
+    } else if (65 <= keyCode && keyCode <= 90) {
+      thisBlock.innerText = key;
+      index += 1;
+    }
+  };
+
+  window.addEventListener("keydown", handleKeydown);
 }
 
-function 삭제버튼_클릭시_실행될_함수() {
-  if (answer_5.innerText != "") {
-    answer_5.innerText = "";
-    answer_5.style.borderColor = "#DBDBDB";
-  } else if (answer_4.innerText != "") {
-    answer_4.innerText = "";
-    answer_4.style.borderColor = "#DBDBDB";
-  } else if (answer_3.innerText != "") {
-    answer_3.innerText = "";
-    answer_3.style.borderColor = "#DBDBDB";
-  } else if (answer_2.innerText != "") {
-    answer_2.innerText = "";
-    answer_2.style.borderColor = "#DBDBDB";
-  } else if (answer_1.innerText != "") {
-    answer_1.innerText = "";
-    answer_1.style.borderColor = "#DBDBDB";
-  }
-}
-
-function 엔터버튼_클릭시_실행될_함수() {
-  if (answer_5.innerText === "") {
-    alert("Not enough letters");
-  } else {
-    alert("Not in word list");
-  }
-}
-
-keyboardBtn.forEach((btn) => {
-  btn.addEventListener("click", 클릭시_실행될_함수);
-});
-
-keyboardDeleteBtn.addEventListener("click", 삭제버튼_클릭시_실행될_함수);
-
-keyboardEnterBtn.addEventListener("click", 엔터버튼_클릭시_실행될_함수);
+appStart();
