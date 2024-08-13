@@ -42,7 +42,14 @@ function appStart() {
         맞은_갯수 += 1;
         block.style.background = "#6AAA64";
       } else if (정답.includes(입력한_글자)) block.style.background = "#C9B458";
-      else block.style.background = "#787C7E";
+      else {
+        block.style.background = "#787C7E";
+        block.classList.add("animate");
+
+        setTimeout(() => {
+          block.classList.remove("animate");
+        }, 500);
+      }
 
       block.style.color = "white";
     }

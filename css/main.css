@@ -19,3 +19,23 @@ main {
   font-weight: bold;
   font-size: 35px;
 }
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  30% {
+    transform: translate(50px, 0);
+  }
+  50% {
+    transform: translate(0, 50px);
+  }
+  70% {
+    transform: rotate(90deg);
+  }
+}
+
+.animate {
+  animation: bounce 0.5s ease;
+}
