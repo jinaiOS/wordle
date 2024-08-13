@@ -3,6 +3,11 @@ const 정답 = "APPLE";
 let attempts = 0;
 let index = 0;
 
+const keyboardBtn = document.querySelectorAll(".keyboard__btn");
+
+const keyboardEnterBtn = document.querySelector(".keyboard__btn-enter");
+const keyboardDeleteBtn = document.querySelector(".keyboard__btn-delete");
+
 function appStart() {
   const displayGameover = () => {
     const div = document.createElement("div");
@@ -73,7 +78,32 @@ function appStart() {
     }
   };
 
+  const handleButtonClick = (event) => {
+    const key = event.target.innerText.toUpperCase();
+    const thisBlock = document.querySelector(
+      `.answer-box__grid[data-index='${attempts}${index}']`
+    );
+
+    if (key === "DELETE") {
+      handleBackspace();
+    } else if (key === "ENTER") {
+      handleEnterKey();
+    } else {
+      if (index < 5) {
+        thisBlock.innerText = key;
+        index += 1;
+      }
+    }
+  };
+
   window.addEventListener("keydown", handleKeydown);
+
+  keyboardBtn.forEach((btn) => {
+    btn.addEventListener("click", handleButtonClick);
+  });
+
+  keyboardDeleteBtn.addEventListener("click", handleBackspace);
+  keyboardEnterBtn.addEventListener("click", handleEnterKey);
 }
 
 appStart();
