@@ -12,14 +12,24 @@ function appStart() {
   const displayGameover = () => {
     const div = document.createElement("div");
     div.innerText = "게임이 종료됐습니다.";
-    div.style =
-      "display:flex; justify-content:center; align-items:center; position:absolute; top:40vp; left:45vw; background-color:white; width:200px; height:140px;";
+    div.style.display = "flex";
+    div.style.justifyContent = "center";
+    div.style.alignItems = "center";
+    div.style.position = "fixed";
+    div.style.top = "50%";
+    div.style.left = "50%";
+    div.style.transform = "translate(-50%, -50%)";
+    div.style.backgroundColor = "white";
+    div.style.width = "200px";
+    div.style.height = "140px";
+    div.style.boxShadow = "0 0 10px rgba(0, 0, 0, 0.5)";
+    div.style.zIndex = "1000";
     document.body.appendChild(div);
   };
 
   const gameover = () => {
     window.removeEventListener("keydown", handleKeydown);
-    displayGameover;
+    displayGameover();
   };
 
   const nextLine = () => {
