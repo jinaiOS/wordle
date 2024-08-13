@@ -39,3 +39,23 @@ main {
 .animate {
   animation: bounce 0.5s ease;
 }
+
+@keyframes success__bounce {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  30% {
+    transform: translate(50px, 0);
+  }
+  50% {
+    transform: rotateY(90deg);
+  }
+  70% {
+    transform: rotate(90deg);
+  }
+}
+
+.success__animate {
+  animation: success__bounce 0.5s ease;
+}

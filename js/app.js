@@ -41,6 +41,12 @@ function appStart() {
       if (입력한_글자 === 정답_글자) {
         맞은_갯수 += 1;
         block.style.background = "#6AAA64";
+
+        block.classList.add("success__animate");
+
+        setTimeout(() => {
+          block.classList.remove("success__animate");
+        }, 500);
       } else if (정답.includes(입력한_글자)) block.style.background = "#C9B458";
       else {
         block.style.background = "#787C7E";
@@ -54,7 +60,9 @@ function appStart() {
       block.style.color = "white";
     }
 
-    if (맞은_갯수 === 5) gameover();
+    if (맞은_갯수 === 5) {
+      gameover();
+    }
     nextLine();
   };
 
