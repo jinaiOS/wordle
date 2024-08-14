@@ -1,4 +1,4 @@
-const 정답 = "SORRY";
+const 정답 = "TODAY";
 
 let attempts = 0;
 let index = 0;
