@@ -4,7 +4,7 @@ from fastapi.staticfiles import StaticFiles
 
 app = FastAPI()
 
-answer='INDEX'
+answer='TRAIN'
 
 @app.get('/answer')
 def get_answer():
